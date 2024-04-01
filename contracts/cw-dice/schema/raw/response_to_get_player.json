@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "GetPlayerResponse",
+  "type": "object",
+  "required": [
+    "player"
+  ],
+  "properties": {
+    "player": {
+      "$ref": "#/definitions/Player"
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "Player": {
+      "type": "object",
+      "required": [
+        "last_timestamp",
+        "times"
+      ],
+      "properties": {
+        "last_timestamp": {
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0.0
+        },
+        "times": {
+          "type": "integer",
+          "format": "uint64",
+          "minimum": 0.0
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

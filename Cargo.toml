@@ -1,0 +1,41 @@
+[workspace]
+members  = ["contracts/*"]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+version = "0.1.1"
+
+license    = "Apache-2.0"
+
+exclude = [
+  # Those files are rust-optimizer artifacts. You might want to commit them for convenience but they should not be part of the source code publication.
+  "contract.wasm",
+  "hash.txt",
+]
+
+[workspace.dependencies]
+cosmwasm-schema  = "1.5.0"
+cosmwasm-std     = "1.5.0"
+cw-storage-plus  = "1.2.0"
+cw-utils         = "1.0.3"
+cw2              = "1.1.2"
+schemars         = "0.8.16"
+semver           = "1.0.22"
+serde = { version = "1.0.189", default-features = false, features = ["derive"] }
+thiserror        = "1.0.50"
+anyhow           = "1"
+
+cw-multi-test = "0.19.0"
+
+[profile.release.package.cw-dice]
+codegen-units = 1
+incremental   = false
+
+[profile.release]
+rpath            = false
+lto              = true
+overflow-checks  = true
+opt-level        = 3
+debug            = false
+debug-assertions = false
